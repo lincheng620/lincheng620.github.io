@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.lincheng.ink/2020/11/05/%E4%B9%90%E8%A7%82%E9%94%81/</loc>
+    <loc>http://www.lincheng.ink/2020/10/29/ArrayList%E5%92%8CVector%E6%AF%94%E8%BE%83/</loc>
     
     <lastmod>2020-11-05</lastmod>
     
@@ -16,16 +16,16 @@
   </url>
   
   <url>
-    <loc>http://www.lincheng.ink/comment/index.html</loc>
+    <loc>http://www.lincheng.ink/2020/11/05/%E4%B9%90%E8%A7%82%E9%94%81/</loc>
     
     <lastmod>2020-11-05</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.lincheng.ink/2020/10/29/my-first-blog/</loc>
+    <loc>http://www.lincheng.ink/comment/index.html</loc>
     
-    <lastmod>2020-11-04</lastmod>
+    <lastmod>2020-11-05</lastmod>
     
   </url>
   
@@ -52,13 +52,6 @@
   
   <url>
     <loc>http://www.lincheng.ink/categories/index.html</loc>
-    
-    <lastmod>2020-11-04</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.lincheng.ink/2020/10/29/hello-world/</loc>
     
     <lastmod>2020-11-04</lastmod>
     

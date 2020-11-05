@@ -50,7 +50,7 @@
     <link href="http://www.lincheng.ink/2020/11/05/HashMap%E5%92%8CHashtable%E7%9A%84%E8%AF%A6%E7%BB%86%E5%8C%BA%E5%88%AB/"/>
     <id>http://www.lincheng.ink/2020/11/05/HashMap%E5%92%8CHashtable%E7%9A%84%E8%AF%A6%E7%BB%86%E5%8C%BA%E5%88%AB/</id>
     <published>2020-11-05T01:34:18.000Z</published>
-    <updated>2020-11-05T04:10:46.532Z</updated>
+    <updated>2020-11-05T04:41:59.443Z</updated>
     
     <content type="html"><![CDATA[<h2 id="hashmap和hashtable的详细区别"><a class="markdownIt-Anchor" href="#hashmap和hashtable的详细区别"></a> <strong>HashMap和Hashtable的详细区别</strong></h2><h3 id="一-简述"><a class="markdownIt-Anchor" href="#一-简述"></a> 一、简述：</h3><h4 id="1安全性"><a class="markdownIt-Anchor" href="#1安全性"></a> 1.安全性</h4><p>Hashtable是线程安全，HashMap是非线程安全。<br>HashMap的性能会高于Hashtable，我们平时使用时若无特殊需求建议使用HashMap，在多线程环境下若使用HashMap需要使用<code>Collections.synchronizedMap()</code>方法来获取一个线程安全的集合（<code>Collections.synchronizedMap()</code>实现原理是Collections定义了一个<code>SynchronizedMap</code>的内部类，这个类实现了Map接口，在调用方法时使<code>用synchronized</code>来保证线程同步</p><h4 id="2是否可以使用null作为key"><a class="markdownIt-Anchor" href="#2是否可以使用null作为key"></a> 2.是否可以使用null作为key</h4><p>HashMap可以使用null作为key，不过建议还是尽量避免这样使用。HashMap以null作为key时，总是存储在table数组的第一个节点上。而Hashtable则不允许null作为key</p><h4 id="3继承了什么实现了什么"><a class="markdownIt-Anchor" href="#3继承了什么实现了什么"></a> 3.继承了什么，实现了什么</h4><p>HashMap继承了AbstractMap，HashTable继承Dictionary抽象类，两者均实现Map接口</p><h4 id="4默认容量及如何扩容"><a class="markdownIt-Anchor" href="#4默认容量及如何扩容"></a> 4.默认容量及如何扩容</h4><p>HashMap的初始容量为16，Hashtable初始容量为11，两者的填充因子默认都是0.75。<br>HashMap扩容时是当前容量翻倍即:<code>capacity</code> * <code>2</code>，Hashtable扩容时是容量翻倍+1即:<code>capacity</code> * 2+1</p><p><strong>什么情况下需要对map的数组进行扩容</strong></p><ul><li>当hashmap中元素的个数超过数组大小<em>loadFactor时，就会进行数组扩容，若hashmap的数组默认大小已经是最大的了，就不再进行扩容，而是采取随机碰撞的方法。loadFactor的默认值为0.75，数组大小的默认值为16，所以，当hashmap中元素的个数超过16</em>0.75=12时，就把数组的大小扩展为2*16=32，即扩展一倍</li><li>然后重新计算每个元素在数组中的位置，而这是一个非常消耗性能的操作，所以如果我们已经预知hashmap中元素的个数，那么预设元素的个数能够有效的提高hashmap的性能。比如说，我们有1000个元素new HashMap(1000), 但是理论上来讲new HashMap(1024)更合适</li></ul><h4 id="6底层实现"><a class="markdownIt-Anchor" href="#6底层实现"></a> 6.底层实现</h4><p>ashMap和Hashtable的底层实现都是<code>数组</code>+<code>链表</code>结构实现</p><h4 id="7计算hash的方法不同"><a class="markdownIt-Anchor" href="#7计算hash的方法不同"></a> 7.计算hash的方法不同</h4><p>Hashtable计算hash是直接使用key的hashcode对table数组的长度直接进行取模<br>HashMap计算hash对key的hashcode进行了二次hash，以获得更好的散列值，然后对table数组长度取模</p><h2 id="hashmap的存储原理"><a class="markdownIt-Anchor" href="#hashmap的存储原理"></a> HashMap的存储原理</h2><img src="http://i1.fuimg.com/729283/9a131c0091ab7d99.png"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> hash;</span><br><span class="line">    <span class="keyword">final</span> K key;</span><br><span class="line">    V value;</span><br><span class="line">    Entry&lt;K,V&gt; next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -70,13 +70,13 @@
   </entry>
   
   <entry>
-    <title>my-first-blog</title>
-    <link href="http://www.lincheng.ink/2020/10/29/my-first-blog/"/>
-    <id>http://www.lincheng.ink/2020/10/29/my-first-blog/</id>
+    <title>ArrayList和Vector比较</title>
+    <link href="http://www.lincheng.ink/2020/10/29/ArrayList%E5%92%8CVector%E6%AF%94%E8%BE%83/"/>
+    <id>http://www.lincheng.ink/2020/10/29/ArrayList%E5%92%8CVector%E6%AF%94%E8%BE%83/</id>
     <published>2020-10-29T04:54:35.000Z</published>
-    <updated>2020-11-04T15:43:00.654Z</updated>
+    <updated>2020-11-05T04:44:14.539Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="arraylist与vector比较"><a class="markdownIt-Anchor" href="#arraylist与vector比较"></a> ArrayList与Vector比较</h2><p><img src="/2020/10/29/my-first-blog/1.png" alt="1"></p><ol><li>ArrayList出现于jdk1.2，vector出现于1.0.</li><li>继承的类实现的接口都是一样的，<ul><li>都继承了<strong>AbstractList类</strong>（继承后可以使用迭代器遍历），</li><li>实现了<strong>RandomAccess</strong>(标记接口，标明实现该接口的list支持快速随机访问)，</li><li><strong>cloneable接口</strong>（标识接口，合法调用clone方法），</li><li><strong>serializable</strong>（序列化标识接口）</li></ul></li><li>两者底层的数据存储都使用的<strong>Object数组</strong>实现<ul><li>因为是数组实现，所以具有<strong>查找快</strong>（因为数组的每个元素的首地址是可以得到的，数组是0序的，所以： 被访问元素的首地址=首地址+元素类型字节数*下标  ），</li><li><strong>增删慢</strong>（因为往数组中间增删元素时，为了保证存储空间的连续性，会导致后面所有元素地址的改变）的特点</li></ul></li><li>当两者<strong>容量</strong>不够时，都会进行对Object数组的扩容</li></ol><ul><li>ArrayList在底层数组不够用时在原来的基础上扩展0.5倍，Vector是扩展1倍。</li></ul><ol start="5"><li>线程的安全性不同<ul><li><p>vector是线程安全的,在vector的大多数方法都使用synchronized关键字修饰，</p></li><li><p>arrayList是线程不安全的（可以通过Collections.synchronizedList（）实现线程安全）</p></li><li><pre class="highlight"><code class="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span></span>&#123;    <span class="hljs-keyword">int</span> a = <span class="hljs-number">11</span>;    <span class="hljs-keyword">if</span>(a &gt; <span class="hljs-number">10</span>)&#123;        System.out.println(<span class="hljs-string">"a大于10"</span>);&#125;&#125;&lt;!--code￼<span class="hljs-number">0</span>--&gt;</code></pre></li></ul></li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="arraylist与vector比较"><a class="markdownIt-Anchor" href="#arraylist与vector比较"></a> ArrayList与Vector比较</h2><p><img src="/2020/10/29/ArrayList%E5%92%8CVector%E6%AF%94%E8%BE%83/1.png" alt="1"></p><ol><li>ArrayList出现于jdk1.2，vector出现于1.0.</li><li>继承的类实现的接口都是一样的，<ul><li>都继承了<strong>AbstractList类</strong>（继承后可以使用迭代器遍历），</li><li>实现了<strong>RandomAccess</strong>(标记接口，标明实现该接口的list支持快速随机访问)，</li><li><strong>cloneable接口</strong>（标识接口，合法调用clone方法），</li><li><strong>serializable</strong>（序列化标识接口）</li></ul></li><li>两者底层的数据存储都使用的<strong>Object数组</strong>实现<ul><li>因为是数组实现，所以具有<strong>查找快</strong>（因为数组的每个元素的首地址是可以得到的，数组是0序的，所以： 被访问元素的首地址=首地址+元素类型字节数*下标  ），</li><li><strong>增删慢</strong>（因为往数组中间增删元素时，为了保证存储空间的连续性，会导致后面所有元素地址的改变）的特点</li></ul></li><li>当两者<strong>容量</strong>不够时，都会进行对Object数组的扩容</li></ol><ul><li>ArrayList在底层数组不够用时在原来的基础上扩展0.5倍，Vector是扩展1倍。</li></ul><ol start="5"><li>线程的安全性不同<ul><li><p>vector是线程安全的,在vector的大多数方法都使用synchronized关键字修饰，</p></li><li><p>arrayList是线程不安全的（可以通过Collections.synchronizedList（）实现线程安全）</p></li><li><pre class="highlight"><code class="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span></span>&#123;    <span class="hljs-keyword">int</span> a = <span class="hljs-number">11</span>;    <span class="hljs-keyword">if</span>(a &gt; <span class="hljs-number">10</span>)&#123;        System.out.println(<span class="hljs-string">"a大于10"</span>);&#125;&#125;&lt;!--code￼<span class="hljs-number">0</span>--&gt;</code></pre></li></ul></li></ol>]]></content>
     
     
     <summary type="html">附加一段文章摘要，字数最好在140字以内，会出现在meta的description里面</summary>
@@ -89,26 +89,6 @@
     <category term="java" scheme="http://www.lincheng.ink/tags/java/"/>
     
     <category term="数据结构" scheme="http://www.lincheng.ink/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://www.lincheng.ink/2020/10/29/hello-world/"/>
-    <id>http://www.lincheng.ink/2020/10/29/hello-world/</id>
-    <published>2020-10-29T01:35:06.900Z</published>
-    <updated>2020-11-04T01:37:39.414Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2><h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
-      
-    
-    
-    
     
   </entry>
   
