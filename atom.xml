@@ -6,7 +6,7 @@
   <link href="http://www.lincheng.ink/atom.xml" rel="self"/>
   
   <link href="http://www.lincheng.ink/"/>
-  <updated>2020-12-15T06:15:12.953Z</updated>
+  <updated>2020-12-15T06:51:18.534Z</updated>
   <id>http://www.lincheng.ink/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>周任务发布</title>
+    <link href="http://www.lincheng.ink/2020/12/15/%E4%BB%BB%E5%8A%A1%E5%8F%91%E5%B8%83/"/>
+    <id>http://www.lincheng.ink/2020/12/15/%E4%BB%BB%E5%8A%A1%E5%8F%91%E5%B8%83/</id>
+    <published>2020-12-15T06:35:44.000Z</published>
+    <updated>2020-12-15T06:51:18.534Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/2020/12/15/%E4%BB%BB%E5%8A%A1%E5%8F%91%E5%B8%83/shamo.jpg" alt="shamo"></p><p><strong>篮球视觉组</strong></p><p>学习计划</p><ol><li><p>装ubuntu系统，自己电脑上可以ubuntu和windows双系统共存。从已有的盘中压出80g来安装。推荐教程地址https://www.cnblogs.com/masbay/p/10745170.html</p></li><li><p>在ubuntu系统下使用pip安装opencv，numpy等工具包。</p></li><li><p>python基础语法学习。学习网站https://www.liaoxuefeng.com/wiki/1016959663602400#0，切实自己敲一遍代码，需要学习基础&gt;函数&gt;高级特性&gt;函数式编程&gt;模块&gt;面向对象编程&gt;io&gt;线程,这些章节。</p></li><li><p>opencv学习。可以利用官网教程来学，也可以找书或者pdf来学习，官网教程比较方便。opencv中文教程 <a href="https://www.kancloud.cn/aollo/aolloopencv/259610">https://www.kancloud.cn/aollo/aolloopencv/259610</a></p></li><li><p>神经网络入门。推荐先阅读书籍，再入门框架。书:复旦大学教科书https://github.com/nndl/nndl.github.io</p></li><li><p>框架学习tensorflow:<a href="https://tensorflow.google.cn">https://tensorflow.google.cn</a><br>pytorch:<a href="https://pytorch-cn.readthedocs.io/zh/latest/">https://pytorch-cn.readthedocs.io/zh/latest/</a><br>框架学习看官网教程即可。</p></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2020/12/15/%E4%BB%BB%E5%8A%A1%E5%8F%91%E5%B8%83/shamo.jpg&quot; alt=&quot;shamo&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;篮球视觉组&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;学习计划&lt;/p&gt;
+&lt;ol&gt;
+&lt;li</summary>
+      
+    
+    
+    
+    <category term="自强队篮球组" scheme="http://www.lincheng.ink/categories/%E8%87%AA%E5%BC%BA%E9%98%9F%E7%AF%AE%E7%90%83%E7%BB%84/"/>
+    
+    
+    <category term="任务发布" scheme="http://www.lincheng.ink/tags/%E4%BB%BB%E5%8A%A1%E5%8F%91%E5%B8%83/"/>
+    
+  </entry>
   
   <entry>
     <title>乐观锁</title>
