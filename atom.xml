@@ -125,29 +125,6 @@
   
   <entry>
     <title>ArrayList和Vector比较</title>
-    <link href="http://www.lincheng.ink/2020/10/29/ArrayList%E5%92%8CVector%E6%AF%94%E8%BE%83/"/>
-    <id>http://www.lincheng.ink/2020/10/29/ArrayList%E5%92%8CVector%E6%AF%94%E8%BE%83/</id>
-    <published>2020-10-29T04:54:35.000Z</published>
-    <updated>2020-11-05T05:20:46.608Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="arraylist与vector比较"><a class="markdownIt-Anchor" href="#arraylist与vector比较"></a> ArrayList与Vector比较</h2><img src="http://i1.fuimg.com/729283/e2e8609c488fa008.png"><ol><li>ArrayList出现于jdk1.2，vector出现于1.0.</li><li>继承的类实现的接口都是一样的，<ul><li>都继承了<strong>AbstractList类</strong>（继承后可以使用迭代器遍历），</li><li>实现了<strong>RandomAccess</strong>(标记接口，标明实现该接口的list支持快速随机访问)，</li><li><strong>cloneable接口</strong>（标识接口，合法调用clone方法），</li><li><strong>serializable</strong>（序列化标识接口）</li></ul></li><li>两者底层的数据存储都使用的<strong>Object数组</strong>实现<ul><li>因为是数组实现，所以具有<strong>查找快</strong>（因为数组的每个元素的首地址是可以得到的，数组是0序的，所以： 被访问元素的首地址=首地址+元素类型字节数*下标  ），</li><li><strong>增删慢</strong>（因为往数组中间增删元素时，为了保证存储空间的连续性，会导致后面所有元素地址的改变）的特点</li></ul></li><li>当两者<strong>容量</strong>不够时，都会进行对Object数组的扩容</li></ol><ul><li>ArrayList在底层数组不够用时在原来的基础上扩展0.5倍，Vector是扩展1倍。</li></ul><ol start="5"><li>线程的安全性不同<ul><li><p>vector是线程安全的,在vector的大多数方法都使用synchronized关键字修饰，</p></li><li><p>arrayList是线程不安全的（可以通过Collections.synchronizedList（）实现线程安全）</p></li></ul></li></ol><p>无一例外，<strong>只要是关键性的操作，方法前面都加了synchronized关键字，来保证线程的安全性</strong>。当执行synchronized修饰的方法前，系统会对该方法加一把锁，方法执行完成后释放锁，**加锁和释放锁的这个过程，在系统中是有开销的，因此，**在单线程的环境中，Vector效率要差很多。（多线程环境不允许用ArrayList，需要做处理）。</p><p><strong>和ArrayList和Vector一样，同样的类似关系的类还有HashMap和HashTable，StringBuilder和StringBuffer，后者是前者线程安全版本的实现。</strong></p>]]></content>
-    
-    
-    <summary type="html">附加一段文章摘要，字数最好在140字以内，会出现在meta的description里面</summary>
-    
-    
-    
-    <category term="java" scheme="http://www.lincheng.ink/categories/java/"/>
-    
-    
-    <category term="java" scheme="http://www.lincheng.ink/tags/java/"/>
-    
-    <category term="数据结构" scheme="http://www.lincheng.ink/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ArrayList和Vector比较</title>
     <link href="http://www.lincheng.ink/2020/10/29/ArrayList%E4%B8%8EVector%E7%9A%84%E6%AF%94%E8%BE%83/"/>
     <id>http://www.lincheng.ink/2020/10/29/ArrayList%E4%B8%8EVector%E7%9A%84%E6%AF%94%E8%BE%83/</id>
     <published>2020-10-29T04:54:35.000Z</published>
