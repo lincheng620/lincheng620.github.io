@@ -6,7 +6,7 @@
   <link href="http://www.lincheng.ink/atom.xml" rel="self"/>
   
   <link href="http://www.lincheng.ink/"/>
-  <updated>2020-12-15T08:02:28.840Z</updated>
+  <updated>2020-12-16T02:05:58.485Z</updated>
   <id>http://www.lincheng.ink/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://www.lincheng.ink/2020/12/15/%E5%90%8D%E4%BA%BA%E8%AF%AD%E5%BD%95/"/>
     <id>http://www.lincheng.ink/2020/12/15/%E5%90%8D%E4%BA%BA%E8%AF%AD%E5%BD%95/</id>
     <published>2020-12-15T07:54:02.000Z</published>
-    <updated>2020-12-15T08:02:28.840Z</updated>
+    <updated>2020-12-16T02:05:58.485Z</updated>
     
     <content type="html"><![CDATA[<p><img src="/2020/12/15/%E5%90%8D%E4%BA%BA%E8%AF%AD%E5%BD%95/yulu.jpg" alt="yulu"></p>]]></content>
     
@@ -103,7 +103,7 @@
     <link href="http://www.lincheng.ink/2020/11/05/HashMap%E5%92%8CHashtable%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
     <id>http://www.lincheng.ink/2020/11/05/HashMap%E5%92%8CHashtable%E7%9A%84%E5%8C%BA%E5%88%AB/</id>
     <published>2020-11-05T01:34:18.000Z</published>
-    <updated>2020-12-15T08:09:09.226Z</updated>
+    <updated>2020-12-16T02:19:38.836Z</updated>
     
     <content type="html"><![CDATA[<h2 id="hashmap和hashtable的区别"><a class="markdownIt-Anchor" href="#hashmap和hashtable的区别"></a> <strong>HashMap和Hashtable的区别</strong></h2><h3 id="一-简述"><a class="markdownIt-Anchor" href="#一-简述"></a> 一、简述：</h3><h4 id="1安全性"><a class="markdownIt-Anchor" href="#1安全性"></a> 1.安全性</h4><p>Hashtable是线程安全，HashMap是非线程安全。<br>HashMap的性能会高于Hashtable，我们平时使用时若无特殊需求建议使用HashMap，在多线程环境下若使用HashMap需要使用<code>Collections.synchronizedMap()</code>方法来获取一个线程安全的集合（<code>Collections.synchronizedMap()</code>实现原理是Collections定义了一个<code>SynchronizedMap</code>的内部类，这个类实现了Map接口，在调用方法时使<code>用synchronized</code>来保证线程同步</p><h4 id="2是否可以使用null作为key"><a class="markdownIt-Anchor" href="#2是否可以使用null作为key"></a> 2.是否可以使用null作为key</h4><p>HashMap可以使用null作为key，不过建议还是尽量避免这样使用。HashMap以null作为key时，总是存储在table数组的第一个节点上。而Hashtable则不允许null作为key</p><h4 id="3继承了什么实现了什么"><a class="markdownIt-Anchor" href="#3继承了什么实现了什么"></a> 3.继承了什么，实现了什么</h4><p>HashMap继承了AbstractMap，HashTable继承Dictionary抽象类，两者均实现Map接口</p><h4 id="4默认容量及如何扩容"><a class="markdownIt-Anchor" href="#4默认容量及如何扩容"></a> 4.默认容量及如何扩容</h4><p>HashMap的初始容量为16，Hashtable初始容量为11，两者的填充因子默认都是0.75。<br>HashMap扩容时是当前容量翻倍即:<code>capacity</code> * <code>2</code>，Hashtable扩容时是容量翻倍+1即:<code>capacity</code> * 2+1</p><p><strong>什么情况下需要对map的数组进行扩容</strong></p><ul><li>当hashmap中元素的个数超过数组大小<em>loadFactor时，就会进行数组扩容，若hashmap的数组默认大小已经是最大的了，就不再进行扩容，而是采取随机碰撞的方法。loadFactor的默认值为0.75，数组大小的默认值为16，所以，当hashmap中元素的个数超过16</em>0.75=12时，就把数组的大小扩展为2*16=32，即扩展一倍</li><li>然后重新计算每个元素在数组中的位置，而这是一个非常消耗性能的操作，所以如果我们已经预知hashmap中元素的个数，那么预设元素的个数能够有效的提高hashmap的性能。比如说，我们有1000个元素new HashMap(1000), 但是理论上来讲new HashMap(1024)更合适</li></ul><h4 id="6底层实现"><a class="markdownIt-Anchor" href="#6底层实现"></a> 6.底层实现</h4><p>ashMap和Hashtable的底层实现都是<code>数组</code>+<code>链表</code>结构实现</p><h4 id="7计算hash的方法不同"><a class="markdownIt-Anchor" href="#7计算hash的方法不同"></a> 7.计算hash的方法不同</h4><p>Hashtable计算hash是直接使用key的hashcode对table数组的长度直接进行取模<br>HashMap计算hash对key的hashcode进行了二次hash，以获得更好的散列值，然后对table数组长度取模</p><h2 id="hashmap的存储原理"><a class="markdownIt-Anchor" href="#hashmap的存储原理"></a> HashMap的存储原理</h2><p><img src="/2020/11/05/HashMap%E5%92%8CHashtable%E7%9A%84%E5%8C%BA%E5%88%AB/%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86.png" alt="存储原理"></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> hash;</span><br><span class="line">    <span class="keyword">final</span> K key;</span><br><span class="line">    V value;</span><br><span class="line">    Entry&lt;K,V&gt; next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -128,7 +128,7 @@
     <link href="http://www.lincheng.ink/2020/10/29/ArrayList%E4%B8%8EVector%E7%9A%84%E6%AF%94%E8%BE%83/"/>
     <id>http://www.lincheng.ink/2020/10/29/ArrayList%E4%B8%8EVector%E7%9A%84%E6%AF%94%E8%BE%83/</id>
     <published>2020-10-29T04:54:35.000Z</published>
-    <updated>2020-12-15T08:13:18.403Z</updated>
+    <updated>2020-12-16T02:20:18.738Z</updated>
     
     <content type="html"><![CDATA[<h2 id="arraylist与vector比较"><a class="markdownIt-Anchor" href="#arraylist与vector比较"></a> ArrayList与Vector比较</h2><p><img src="/2020/10/29/ArrayList%E4%B8%8EVector%E7%9A%84%E6%AF%94%E8%BE%83/arraylist-vs-vector.jpg" alt="arraylist-vs-vector"></p><ol><li>ArrayList出现于jdk1.2，vector出现于1.0.</li><li>继承的类实现的接口都是一样的，<ul><li>都继承了<strong>AbstractList类</strong>（继承后可以使用迭代器遍历），</li><li>实现了<strong>RandomAccess</strong>(标记接口，标明实现该接口的list支持快速随机访问)，</li><li><strong>cloneable接口</strong>（标识接口，合法调用clone方法），</li><li><strong>serializable</strong>（序列化标识接口）</li></ul></li><li>两者底层的数据存储都使用的<strong>Object数组</strong>实现<ul><li>因为是数组实现，所以具有<strong>查找快</strong>（因为数组的每个元素的首地址是可以得到的，数组是0序的，所以： 被访问元素的首地址=首地址+元素类型字节数*下标  ），</li><li><strong>增删慢</strong>（因为往数组中间增删元素时，为了保证存储空间的连续性，会导致后面所有元素地址的改变）的特点</li></ul></li><li>当两者<strong>容量</strong>不够时，都会进行对Object数组的扩容</li></ol><ul><li>ArrayList在底层数组不够用时在原来的基础上扩展0.5倍，Vector是扩展1倍。</li></ul><ol start="5"><li>线程的安全性不同<ul><li><p>vector是线程安全的,在vector的大多数方法都使用synchronized关键字修饰，</p></li><li><p>arrayList是线程不安全的（可以通过Collections.synchronizedList（）实现线程安全）</p></li></ul></li></ol><p>无一例外，<strong>只要是关键性的操作，方法前面都加了synchronized关键字，来保证线程的安全性</strong>。当执行synchronized修饰的方法前，系统会对该方法加一把锁，方法执行完成后释放锁，**加锁和释放锁的这个过程，在系统中是有开销的，因此，**在单线程的环境中，Vector效率要差很多。（多线程环境不允许用ArrayList，需要做处理）。</p><p><strong>和ArrayList和Vector一样，同样的类似关系的类还有HashMap和HashTable，StringBuilder和StringBuffer，后者是前者线程安全版本的实现。</strong></p>]]></content>
     
